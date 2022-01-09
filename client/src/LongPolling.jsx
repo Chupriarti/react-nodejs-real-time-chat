@@ -7,7 +7,7 @@ const Longpolling = () => {
 
     React.useEffect(() => {
         subscribe();
-    })
+    }, []);
 
     const subscribe = async () => {
         try {

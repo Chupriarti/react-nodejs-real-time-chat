@@ -1,8 +1,16 @@
 import React from 'react';
+import axios from 'axios';
 
 const Longpolling = () => {
     const [messages, setMessages] = React.useState([]);
     const [value, setValue] = React.useState("");
+
+    const sendMessage = async () => {
+        await axios.post('http://localhost:5000/new-messages', {
+            message: value,
+            id: Date.now()
+        })
+    }
 
     return (
         <div className='center'>
@@ -13,7 +21,7 @@ const Longpolling = () => {
                         onChange={(e) => setValue(e.target.value)} 
                         type="text" 
                     />
-                    <button>Send</button>
+                    <button onClick={sendMessage}>Send</button>
                 </div>
                 <div className="messages">
                     {messages.map( mess => 

@@ -5,7 +5,8 @@ import Longpolling from './LongPolling';
 function App() {
   return (
     <div className="App">
-      <Longpolling />
+      {/* <Longpolling /> */}
+      <EventSourcing />
     </div>
   );
 }

@@ -10,8 +10,8 @@ const EventSourcing = () => {
     }, []);
 
     const subscribe = async () => {
-        const EventSource = new EventSource('http://localhost:5000/connect');
-        EventSource.onmessage = function (event) {
+        const eventSource = new EventSource('http://localhost:5000/connect');
+        eventSource.onmessage = function (event) {
             console.log(event.data);
         }
     }

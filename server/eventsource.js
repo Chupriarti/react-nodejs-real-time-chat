@@ -17,7 +17,7 @@ app.get('/connect', (req, res) => {
         'Cache-Control': 'no-cache'
     });
     emitter.on('newMessage', (message) => {
-        res.write(`data ${JSON.stringify(message)} \n\n`);
+        res.write(`data: ${JSON.stringify(message)} \n\n`);
     })
 });
 

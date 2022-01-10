@@ -11,7 +11,11 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/get-messages', (req, res) => {
-    //TODO
+    res.writeHead(200, {
+        'Connection': 'keep-alive',
+        'Content-Type': 'text/event-stream',
+        'Cache-Control': 'no-cache'
+    })
 });
 
 app.post('/new-messages', (req, res) => {

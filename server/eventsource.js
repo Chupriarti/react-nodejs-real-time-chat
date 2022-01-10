@@ -15,6 +15,9 @@ app.get('/connect', (req, res) => {
         'Connection': 'keep-alive',
         'Content-Type': 'text/event-stream',
         'Cache-Control': 'no-cache'
+    });
+    emitter.on('newMessage', (message) => {
+        res.write(message);
     })
 });
 

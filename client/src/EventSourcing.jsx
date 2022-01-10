@@ -10,14 +10,9 @@ const EventSourcing = () => {
     }, []);
 
     const subscribe = async () => {
-        try {
-            const {data} = await axios.get('http://localhost:5000/get-messages');
-            setMessages(prev => [data, ...prev]);
-            await subscribe();
-        } catch (e){
-            setTimeout(() => {
-                subscribe();
-            }, 500);
+        const EventSource = new EventSource('http://localhost:5000/connect');
+        EventSource.onmessage = function (event) {
+            console.log(event.data);
         }
     }
 

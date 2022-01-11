@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-const WebSocket = () => {
+const WebSocketComponent = () => {
     const [messages, setMessages] = React.useState([]);
     const [value, setValue] = React.useState("");
     const socket = React.useRef();
@@ -71,4 +71,4 @@ const WebSocket = () => {
     )
 }
 
-export default WebSocket;
+export default WebSocketComponent;

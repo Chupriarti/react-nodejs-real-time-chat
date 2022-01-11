@@ -2,14 +2,14 @@ import React from 'react';
 import './app.css';
 import EventSourcing from './EventSourcing';
 import Longpolling from './LongPolling';
-import WebSocket from './WebSocket';
+import WebSocketComponent from './WebSocket';
 
 function App() {
   return (
     <div className="App">
       {/* <Longpolling /> */}
       {/* <EventSourcing /> */}
-      <WebSocket />
+      <WebSocketComponent />
     </div>
   );
 }

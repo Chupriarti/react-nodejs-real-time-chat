@@ -9,7 +9,7 @@ const WebSocketComponent = () => {
     const [username, setUsername] = React.useState("");
 
     React.useEffect(() => {
-        socket.current = new WebSocket('ws://localhost');
+        socket.current = new WebSocket('ws://localhost:5000');
 
         socket.current.onopen = () => {
             setConnected(true);

@@ -5,12 +5,13 @@ const WebSocket = () => {
     const [messages, setMessages] = React.useState([]);
     const [value, setValue] = React.useState("");
     const socket = useRef();
+    const [connected, setConnected] = React.useState(false);
 
     React.useEffect(() => {
         socket.current = new WebSocket('ws://localhost');
 
         socket.current.onopen = () => {
-
+            setConnected(true);
         }
         socket.current.onmessage = () => {
 
@@ -28,6 +29,17 @@ const WebSocket = () => {
             message: value,
             id: Date.now()
         })
+    }
+
+    if (!connected) {
+        return (
+            <div className="center">
+                <div className="form">
+                    <input type="text" placeholder='Enter username' />
+                    <button>Enter</button>
+                </div>
+            </div>
+        )
     }
 
     return (

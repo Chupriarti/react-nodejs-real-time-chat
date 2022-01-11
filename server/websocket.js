@@ -9,14 +9,20 @@ wss.on('connection', function connection (ws) {
         message = JSON.parse(message);
         switch (message.event) {
             case 'message':
-
+                broadcastMessage(message);
                 break;
             case 'connection':
-
+                broadcastMessage(message);
                 break;
         }
     });
 });
+
+function broadcastMessage(message) {
+    wss.clients.forEach(client => {
+        client.send(JSON.stringify(message));
+    })
+}
 
 /* Sample data
 const message = {

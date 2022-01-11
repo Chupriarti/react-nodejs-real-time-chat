@@ -6,6 +6,7 @@ const WebSocket = () => {
     const [value, setValue] = React.useState("");
     const socket = useRef();
     const [connected, setConnected] = React.useState(false);
+    const [username, setUsername] = React.useState("");
 
     React.useEffect(() => {
         socket.current = new WebSocket('ws://localhost');
@@ -35,7 +36,12 @@ const WebSocket = () => {
         return (
             <div className="center">
                 <div className="form">
-                    <input type="text" placeholder='Enter username' />
+                    <input
+                        value={username}
+                        onChange={e => setUsername(e.target.value)}
+                        type="text" 
+                        placeholder='Enter username' 
+                    />
                     <button>Enter</button>
                 </div>
             </div>

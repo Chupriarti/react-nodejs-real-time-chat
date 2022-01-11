@@ -4,7 +4,7 @@ import axios from 'axios';
 const WebSocket = () => {
     const [messages, setMessages] = React.useState([]);
     const [value, setValue] = React.useState("");
-    const socket = useRef();
+    const socket = React.useRef();
     const [connected, setConnected] = React.useState(false);
     const [username, setUsername] = React.useState("");
 

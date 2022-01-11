@@ -4,9 +4,23 @@ import axios from 'axios';
 const WebSocket = () => {
     const [messages, setMessages] = React.useState([]);
     const [value, setValue] = React.useState("");
+    const socket = useRef();
 
     React.useEffect(() => {
+        socket.current = new WebSocket('ws://localhost');
 
+        socket.current.onopen = () => {
+
+        }
+        socket.current.onmessage = () => {
+
+        }
+        socket.current.onclose = () => {
+            console.warn('Socket closed');
+        }
+        socket.current.onerror = () => {
+            console.error('Socket error');
+        }
     }, []);
 
     const sendMessage = async () => {

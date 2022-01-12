@@ -35,10 +35,13 @@ const WebSocketComponent = () => {
     }
 
     const sendMessage = async () => {
-        await axios.post('http://localhost:5000/new-messages', {
+        const message = {
+            username,
             message: value,
-            id: Date.now()
-        })
+            id: Date.now(),
+            event: 'message'
+        }
+        socket.current.send(JSON.stringify(message));
     }
 
     if (!connected) {

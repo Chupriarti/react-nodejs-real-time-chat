@@ -42,6 +42,7 @@ const WebSocketComponent = () => {
             event: 'message'
         }
         socket.current.send(JSON.stringify(message));
+        setValue('');
     }
 
     if (!connected) {

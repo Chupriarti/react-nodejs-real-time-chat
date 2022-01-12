@@ -18,11 +18,12 @@ const WebSocketComponent = () => {
                 username,
                 id: Date.now()
             }
-            socket.current.send(message);
+            socket.current.send(JSON.stringify(message));
             console.warn('Connected to websocket')
+
         }
         socket.current.onmessage = () => {
-
+            
         }
         socket.current.onclose = () => {
             console.warn('Socket closed');

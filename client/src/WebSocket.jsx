@@ -8,7 +8,7 @@ const WebSocketComponent = () => {
     const [connected, setConnected] = React.useState(false);
     const [username, setUsername] = React.useState("");
 
-    React.useEffect(() => {
+    function connect () {
         socket.current = new WebSocket('ws://localhost:5000');
 
         socket.current.onopen = () => {
@@ -23,7 +23,7 @@ const WebSocketComponent = () => {
         socket.current.onerror = () => {
             console.error('Socket error');
         }
-    }, []);
+    }
 
     const sendMessage = async () => {
         await axios.post('http://localhost:5000/new-messages', {
@@ -42,7 +42,7 @@ const WebSocketComponent = () => {
                         type="text" 
                         placeholder='Enter username' 
                     />
-                    <button>Enter</button>
+                    <button onClick={connect}>Enter</button>
                 </div>
             </div>
         )

@@ -70,8 +70,15 @@ const WebSocketComponent = () => {
                 </div>
                 <div className="messages">
                     {messages.map( mess => 
-                        <div className="message" key={mess.id}>
-                            {mess.message}
+                        <div key={mess.id}>
+                            {mess.event === 'connection'
+                                ? <div className='connection_message'>
+                                    User {mess.username} connected
+                                </div>
+                                : <div className='message'>
+                                    {mess.username}: {mess.message}
+                                </div>
+                            }
                         </div>
                     )}
                 </div>

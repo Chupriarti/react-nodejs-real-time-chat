@@ -13,6 +13,12 @@ const WebSocketComponent = () => {
 
         socket.current.onopen = () => {
             setConnected(true);
+            const message = {
+                event: 'connection',
+                username,
+                id: Date.now()
+            }
+            socket.current.send(message);
             console.warn('Connected to websocket')
         }
         socket.current.onmessage = () => {

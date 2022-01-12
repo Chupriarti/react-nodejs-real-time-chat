@@ -22,8 +22,9 @@ const WebSocketComponent = () => {
             console.warn('Connected to websocket')
 
         }
-        socket.current.onmessage = () => {
-            
+        socket.current.onmessage = (event) => {
+            const message = JSON.parse(event.data);
+            setMessages(prev => [message, ...prev]);
         }
         socket.current.onclose = () => {
             console.warn('Socket closed');
